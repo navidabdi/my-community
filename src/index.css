@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .feed-box-btn {
+    @apply flex items-center text-sm justify-between gap-2 py-3 px-4 bg-blue-50 border-2 border-blue-100 rounded-sm sm:px-6 md:rounded-l-sm md:px-8;
+  }
+  .container {
+    @apply w-[90%] m-auto md:w-[80%] xl:w-[40%];
+  }
+  figure {
+    @apply mb-3;
+  }
+  body {
+    @apply text-[.875rem] bg-blue-50 sm:text-[1rem];
+  }
+}

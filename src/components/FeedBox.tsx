@@ -16,10 +16,13 @@ const FeedBox = () => {
   const { nodes: posts } = simplifyPaginatedResult<Post>(data);
 
   return (
-    <section className="flex flex-col gap-5">
+    <section className="container flex flex-col gap-6">
       {console.log(posts)}
       {posts.map((post, i) => (
-        <article className="flex flex-col gap-4 bg-white p-5" key={post?.id}>
+        <article
+          className="flex flex-col gap-4 bg-white px-5 py-7 rounded-lg"
+          key={post?.id}
+        >
           <div className="flex items-center gap-4">
             <div className="avatar">
               <img
@@ -38,7 +41,7 @@ const FeedBox = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-lg font-semibold line-clamp-2 text-gray-800">
               {post?.title}
             </h2>
             <div
@@ -46,27 +49,17 @@ const FeedBox = () => {
               className="text-gray-600 text-sm"
             ></div>
           </div>
-          <div className="flex justify-between">
-            <button className="flex items-center text-sm justify-between gap-1 py-2 px-4 bg-blue-50 rounded-sm">
+          <div className="flex justify-between mt-3">
+            <button className="feed-box-btn ">
               <ThumbUpIcon className="w-5 h-5" /> <span>Like</span>
             </button>
-            <button className="flex items-center text-sm justify-between gap-1 py-2 px-4 bg-blue-50 rounded-sm">
+            <button className="feed-box-btn hidden sm:flex">
               <BellIcon className="w-5 h-5" /> <span>Following</span>
             </button>
-            <button className="flex items-center text-sm justify-between gap-1 py-2 px-4 bg-blue-50 rounded-sm">
+            <button className="feed-box-btn">
               <ShareIcon className="w-5 h-5" /> <span>Share</span>
             </button>
           </div>
-          {/* <div className="flex flex-col justify-center">{i + 1}.</div>
-          <div className="flex flex-col flex-grow">
-            <div>{post.title}</div>
-            {console.log(post)}
-            <div className="flex gap-2 text-xs text-gray-500">
-              <div>By {post.createdBy?.member?.name}</div>|
-              <div>{post.reactionsCount} upvotes</div>|
-              <div>{post.repliesCount} comments</div>
-            </div>
-          </div> */}
         </article>
       ))}
     </section>
