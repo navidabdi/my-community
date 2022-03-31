@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider as TribeProvider } from '@tribeplatform/react-sdk';
+import { BrowserRouter } from 'react-router-dom';
+
 ReactDOM.render(
   <React.StrictMode>
     <TribeProvider
@@ -12,7 +14,9 @@ ReactDOM.render(
         accessToken: localStorage.getItem('accessToken'),
       }}
     >
-      <App />
+      <BrowserRouter basename="/">
+        <App />
+      </BrowserRouter>
     </TribeProvider>
   </React.StrictMode>,
   document.getElementById('root')

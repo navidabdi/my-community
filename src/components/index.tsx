@@ -1,4 +1,4 @@
 import FeedBox from './FeedBox';
 import Header from './Header';
-
-export { FeedBox, Header };
+import SignUp from './SignUp';
+export { FeedBox, Header, SignUp };
