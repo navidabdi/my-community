@@ -51,14 +51,17 @@ const FeedBox = () => {
             ></div>
           </div>
           <div className="flex justify-between gap-3 mt-3">
-            <button className="feed-box-btn">
-              <ThumbUpIcon className="w-5 h-5" /> <span>Like</span>
+            <button className="feed-box-btn group">
+              <ThumbUpIcon className="w-5 h-5 group-hover:-rotate-12" />
+              <span>Like</span>
             </button>
-            <button className="feed-box-btn hidden sm:flex">
-              <BellIcon className="w-5 h-5" /> <span>Following</span>
+            <button className="feed-box-btn group hidden sm:flex">
+              <BellIcon className="w-5 h-5 group-hover:-rotate-12" />
+              <span>Following</span>
             </button>
-            <button className="feed-box-btn">
-              <ShareIcon className="w-5 h-5" /> <span>Share</span>
+            <button className="feed-box-btn group">
+              <ShareIcon className="w-5 h-5 group-hover:-rotate-12" />
+              <span>Share</span>
             </button>
           </div>
         </article>
