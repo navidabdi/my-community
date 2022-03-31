@@ -1,7 +1,12 @@
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
-import { ThumbUpIcon, ShareIcon, BellIcon } from '@heroicons/react/outline';
+import {
+  ThumbUpIcon,
+  ShareIcon,
+  BellIcon,
+  DotsHorizontalIcon,
+} from '@heroicons/react/outline';
 
 const FeedBox = () => {
   const { data } = useFeed({
@@ -23,24 +28,29 @@ const FeedBox = () => {
           className="flex flex-col gap-4  bg-white px-5 py-7 rounded-lg shadow-sm"
           key={post?.id}
         >
-          <div className="flex items-center gap-4">
-            <div className="avatar">
+          <div className="flex justify-between">
+            <div className="flex items-center gap-4">
               <img
                 loading="lazy"
                 className="w-10 h-10 rounded-full"
                 src={`https://tribe-s3-production.imgix.net/${post?.createdBy?.member?.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
                 alt={`${post?.createdBy?.member?.name}`}
               />
+
+              <div className="author-info">
+                <p className="text-gray-700 font-semibold leading-4">
+                  {post?.createdBy?.member?.name}
+                </p>
+                <span className="text-sm text-gray-500">
+                  {post?.createdBy?.member?.tagline}
+                </span>
+              </div>
             </div>
-            <div className="author-info">
-              <p className="text-gray-700 font-semibold leading-4">
-                {post?.createdBy?.member?.name}
-              </p>
-              <span className="text-sm text-gray-500">
-                {post?.createdBy?.member?.tagline}
-              </span>
-            </div>
+            <button aria-label="more">
+              <DotsHorizontalIcon className="w-5 text-gary-500" />
+            </button>
           </div>
+          <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
           <div className="flex flex-col gap-2">
             <h2 className="text-lg font-semibold line-clamp-2 text-gray-800">
               {post?.title}

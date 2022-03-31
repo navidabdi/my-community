@@ -30,11 +30,11 @@ const Header = () => {
           )}
           {user && (
             <div className="relative flex gap-3">
-              <button className="bg-blue-50 border border-blue-200 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
-                <BellIcon className="w-5 text-blue-900" />
+              <button className="bg-blue-50 transition-all duration-150 border group border-blue-200 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
+                <BellIcon className="w-5 text-blue-900 group-hover:rotate-12" />
               </button>
-              <button className="bg-blue-600 border border-blue-600 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
-                <PlusIcon className="w-5 text-white" />
+              <button className="bg-blue-600 transition-all duration-150 border group border-blue-600 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
+                <PlusIcon className="w-5 text-white group-hover:rotate-12" />
               </button>
 
               <img
