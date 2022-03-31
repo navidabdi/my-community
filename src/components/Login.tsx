@@ -1,10 +1,10 @@
 import { useState } from 'react';
-// import { useLogin } from '../hooks/useLogin';
+import { useLogin } from '../hooks/useLogin';
 
 const Login = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  //   const login = useLogin();
+  const login = useLogin();
 
   return (
     <section className="container bg-white p-5 rounded-lg md:p-14 sm:p-10">
@@ -28,7 +28,7 @@ const Login = () => {
       <button
         className="btn"
         onClick={() => {
-          //   login(email, password);
+          login(email, password);
         }}
       >
         Login
