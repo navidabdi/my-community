@@ -5,7 +5,7 @@ const Header = () => {
   const { data: user } = useAuthMember();
   return (
     <>
-      <header className="bg-white py-5 mb-6">
+      <header className="bg-white py-4 mb-6">
         <nav className="container-xl items-center flex justify-between">
           <Link to="/">
             <h1 className="sm:text-lg lg:text-xl font-bold text-blue-900">
@@ -25,17 +25,12 @@ const Header = () => {
           )}
           {user && (
             <>
-              <span className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
-                Hello, {user.name}
-              </span>
-              <div
-                className="block lg:inline-block lg:mt-0 text-black hover:text-white mt-4 cursor-pointer"
-                // onClick={() => {
-                // logout();
-                // }}
-              >
-                Logout
-              </div>
+              <img
+                loading="lazy"
+                className="w-10 h-10 rounded-full"
+                src={`https://tribe-s3-production.imgix.net/${user.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
+                alt={`${user.name}`}
+              />
             </>
           )}
         </nav>

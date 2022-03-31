@@ -2,6 +2,7 @@ import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
 import { ThumbUpIcon, ShareIcon, BellIcon } from '@heroicons/react/outline';
+
 const FeedBox = () => {
   const { data } = useFeed({
     fields: {
@@ -17,7 +18,6 @@ const FeedBox = () => {
 
   return (
     <section className="container flex flex-col gap-6">
-      {console.log(posts)}
       {posts.map((post, i) => (
         <article
           className="flex flex-col gap-4 bg-white px-5 py-7 rounded-lg"
@@ -26,7 +26,8 @@ const FeedBox = () => {
           <div className="flex items-center gap-4">
             <div className="avatar">
               <img
-                className="w-12 h-12 rounded-full"
+                loading="lazy"
+                className="w-10 h-10 rounded-full"
                 src={`https://tribe-s3-production.imgix.net/${post?.createdBy?.member?.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
                 alt={`${post?.createdBy?.member?.name}`}
               />

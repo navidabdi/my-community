@@ -1,10 +1,11 @@
-import { FeedBox, Header, SignUp } from './components';
-import { Routes, Route, Link } from 'react-router-dom';
+import { FeedBox, Header, SignUp, ProfileMenu } from './components';
+import { Routes, Route } from 'react-router-dom';
 import { Login } from './components';
 
 function App() {
   return (
     <div className="app">
+      <ProfileMenu />
       <Header />
       <Routes>
         <Route path="/" element={<FeedBox />} />
