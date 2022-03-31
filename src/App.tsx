@@ -5,7 +5,6 @@ import { Login } from './components';
 function App() {
   return (
     <div className="app">
-      <ProfileMenu />
       <Header />
       <Routes>
         <Route path="/" element={<FeedBox />} />

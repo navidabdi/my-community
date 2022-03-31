@@ -1,11 +1,14 @@
 import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProfileMenu from './ProfileMenu';
 
 const Header = () => {
   const { data: user } = useAuthMember();
+  const [trigerProfileMenu, setTrigerProfileMenu] = useState<boolean>(false);
   return (
     <>
-      <header className="bg-white py-4 mb-6">
+      <header className="bg-white py-4 mb-6 shadow-sm">
         <nav className="container-xl items-center flex justify-between">
           <Link to="/">
             <h1 className="sm:text-lg lg:text-xl font-bold text-blue-900">
@@ -24,14 +27,18 @@ const Header = () => {
             </div>
           )}
           {user && (
-            <>
+            <div
+              className="relative cursor-pointer"
+              onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
+            >
               <img
                 loading="lazy"
                 className="w-10 h-10 rounded-full"
                 src={`https://tribe-s3-production.imgix.net/${user.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
                 alt={`${user.name}`}
               />
-            </>
+              {trigerProfileMenu && <ProfileMenu />}
+            </div>
           )}
         </nav>
       </header>

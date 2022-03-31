@@ -20,7 +20,7 @@ const FeedBox = () => {
     <section className="container flex flex-col gap-6">
       {posts.map((post, i) => (
         <article
-          className="flex flex-col gap-4 bg-white px-5 py-7 rounded-lg"
+          className="flex flex-col gap-4 bg-white px-5 py-7 rounded-lg shadow-sm"
           key={post?.id}
         >
           <div className="flex items-center gap-4">
