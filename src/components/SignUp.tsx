@@ -9,7 +9,7 @@ const SignUp = () => {
   const signup = useSignUp();
 
   return (
-    <section className="container bg-white p-5 rounded-lg md:p-14 sm:p-10">
+    <section className="container shadow-sm bg-white p-5 rounded-lg md:p-14 sm:p-10">
       <h1 className="text-2xl font-bold text-blue-900 mb-5">Sign Up</h1>
       <label className="input-label">Email</label>
       <input

@@ -7,9 +7,18 @@ import {
   LogoutIcon,
 } from '@heroicons/react/outline';
 
-const ProfileMenu = () => {
+interface Props {
+  trigerProfileMenu: boolean;
+}
+const ProfileMenu: React.FC<Props> = (props: Props) => {
   return (
-    <nav className="py-1 bg-white absolute right-0 bottom-100 w-[13rem] rounded-md shadow-lg bg-surface-50 border border-blue-100 focus-visible:ring focus:outline-none">
+    <nav
+      className={`py-1 bg-white absolute right-0 top-[110%] transition-transform duration-200 ease-in-out w-[13rem] rounded-md shadow-lg bg-surface-50 border border-blue-100 focus-visible:ring focus:outline-none ${
+        props.trigerProfileMenu
+          ? 'scale-100 pointer-events-auto opacity-100'
+          : 'scale-0 pointer-events-none opacity-0'
+      }`}
+    >
       <a className="profile-nav-link">
         <UserCircleIcon className="w-5 mr-3" />
         Your Profile
