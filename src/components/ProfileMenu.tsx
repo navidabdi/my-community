@@ -23,30 +23,31 @@ const ProfileMenu: React.FC<Props> = (props: Props) => {
           : 'scale-0 pointer-events-none opacity-0'
       }`}
     >
-      <a className="profile-nav-link">
+      <a className="profile-nav-link" href="#">
         <UserCircleIcon className="w-5 mr-3" />
         Your Profile
       </a>
-      <a className="profile-nav-link">
+      <a className="profile-nav-link" href="#">
         <AdjustmentsIcon className="w-5 mr-3" />
         Account Settings
       </a>
       <div className="w-full border-t border-blue-200/50 my-2 menu-divider"></div>
-      <a className="profile-nav-link">
+      <a className="profile-nav-link" href="#">
         <CogIcon className="w-5 mr-3" />
         Administration
       </a>
-      <a className="profile-nav-link">
+      <a className="profile-nav-link" href="#">
         <ShieldCheckIcon className="w-5 mr-3" />
         Moderation
       </a>
-      <a className="profile-nav-link">
+      <a className="profile-nav-link" href="#">
         <SupportIcon className="w-5 mr-3" />
         Help &amp; Community
       </a>
       <div className="w-full border-t border-blue-200/50 my-2 menu-divider"></div>
       <a
         className="profile-nav-link"
+        href="#"
         onClick={() => {
           logout();
         }}

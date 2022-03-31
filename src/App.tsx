@@ -1,4 +1,4 @@
-import { FeedBox, Header, SignUp, ProfileMenu } from './components';
+import { FeedBox, Header, SignUp } from './components';
 import { Routes, Route } from 'react-router-dom';
 import { Login } from './components';
 
