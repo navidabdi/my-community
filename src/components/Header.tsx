@@ -10,9 +10,12 @@ const Header = () => {
             </h1>
           </Link>
           <div className="flex gap-5 items-center">
-            <button className="bg-blue-600 hover:bg-blue-800 transition-all duration-100 ease-in py-3 px-4 text-blue-50 font-semibold sm:py-4 sm:px-5 rounded-[.3rem] leading-3">
+            <Link
+              to="/login"
+              className="bg-blue-600 hover:bg-blue-800 transition-all duration-100 ease-in py-3 px-4 text-blue-50 font-semibold sm:py-4 sm:px-5 rounded-[.3rem] leading-3"
+            >
               Login
-            </button>
+            </Link>
             <Link to="/signup">Sign Up</Link>
           </div>
         </nav>

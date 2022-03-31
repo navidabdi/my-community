@@ -9,7 +9,7 @@ const SignUp = () => {
   const signup = useSignUp();
 
   return (
-    <form className="container bg-white p-5 rounded-lg md:p-14 sm:p-10">
+    <section className="container bg-white p-5 rounded-lg md:p-14 sm:p-10">
       <h1 className="text-2xl font-bold text-blue-900 mb-5">Sign Up</h1>
       <label className="input-label">Email</label>
       <input
@@ -45,14 +45,14 @@ const SignUp = () => {
         </p>
       </div>
       <button
-        className="bg-blue-600 hover:bg-blue-800 transition-all duration-100 ease-in p-5 text-blue-50 text-[1rem] font-semibold w-full sm:w-1/2 mt-5 rounded-[.3rem] leading-3"
+        className="btn"
         onClick={() => {
           signup(email, name, password);
         }}
       >
         Sign Up
       </button>
-    </form>
+    </section>
   );
 };
 
