@@ -1,11 +1,10 @@
-import { FeedBox } from './components';
+import { FeedBox, Header } from './components';
 
 function App() {
   return (
     <div className="app">
-      <div>
-        <FeedBox />
-      </div>
+      <Header />
+      <FeedBox />
     </div>
   );
 }
