@@ -7,10 +7,14 @@ import {
   LogoutIcon,
 } from '@heroicons/react/outline';
 
+import { useLogout } from '../hooks/useLogout';
+
 interface Props {
   trigerProfileMenu: boolean;
 }
+
 const ProfileMenu: React.FC<Props> = (props: Props) => {
+  const logout = useLogout();
   return (
     <nav
       className={`py-1 bg-white absolute right-0 top-[110%] transition-transform duration-200 ease-in-out w-[13rem] rounded-md shadow-lg bg-surface-50 border border-blue-100 focus-visible:ring focus:outline-none ${
@@ -41,7 +45,12 @@ const ProfileMenu: React.FC<Props> = (props: Props) => {
         Help &amp; Community
       </a>
       <div className="w-full border-t border-blue-200/50 my-2 menu-divider"></div>
-      <a className="profile-nav-link">
+      <a
+        className="profile-nav-link"
+        onClick={() => {
+          logout();
+        }}
+      >
         <LogoutIcon className="w-5 mr-3" />
         <span>Sign out</span>
       </a>
