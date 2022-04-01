@@ -1,12 +1,11 @@
 import { FeedBox, Header, SignUp } from './components';
 import { Routes, Route } from 'react-router-dom';
-import { Login, PostPage, AddPost } from './components';
+import { Login, PostPage } from './components';
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <AddPost />
       <Routes>
         <Route path="/" element={<FeedBox />} />
         <Route path="/signup" element={<SignUp />} />

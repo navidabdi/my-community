@@ -16,9 +16,9 @@ const AddPost = () => {
   const { mutateAsync: addPost } = useAddPost();
 
   return (
-    <section className="container flex flex-col gap-6 mb-10">
+    <section className=" flex flex-col gap-6 mb-10">
       <div
-        className={`bg-white px-5 py-7 transition-all duration-500 ease-in-out rounded-lg shadow-sm overflow-hidden  ${
+        className={`box transition-all duration-500 ease-in-out overflow-hidden  ${
           trigerAddPost ? 'h-auto' : 'h-[6.8rem]'
         }`}
       >
