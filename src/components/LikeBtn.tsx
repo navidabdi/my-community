@@ -6,12 +6,17 @@ import { ThumbUpIcon } from '@heroicons/react/outline';
 import { ThumbUpIcon as ThumbUpIconSolid } from '@heroicons/react/solid';
 import { Post } from '@tribeplatform/gql-client/types';
 
-const LikeBtn = (props: { post: Post }) => {
+interface Props {
+  post: any;
+}
+
+const LikeBtn: React.FC<Props> = (props: Props) => {
   const { post } = props;
   const { mutate: upvote } = useAddReaction();
   const { mutate: downvote } = useRemoveReaction();
   const reacted = post?.reactions?.some(
-    (reaction) => reaction.reacted && reaction.reaction === '+1'
+    (reaction: { reacted: any; reaction: string }) =>
+      reaction.reacted && reaction.reaction === '+1'
   );
   return (
     <button

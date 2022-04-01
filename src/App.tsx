@@ -1,6 +1,7 @@
 import { FeedBox, Header, SignUp } from './components';
 import { Routes, Route } from 'react-router-dom';
 import { Login } from './components';
+import PostPage from './components/PostPage';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<FeedBox />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/post/:postId" element={<PostPage />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
+import { Link } from 'react-router-dom';
 
 import {
   ShareIcon,
@@ -8,7 +9,6 @@ import {
   DotsHorizontalIcon,
 } from '@heroicons/react/outline';
 import LikeBtn from './LikeBtn';
-import { useEffect } from 'react';
 
 const FeedBox = () => {
   const { data } = useFeed({
@@ -37,6 +37,7 @@ const FeedBox = () => {
           className="flex flex-col gap-4  bg-white px-5 py-7 rounded-lg shadow-sm"
           key={post?.id}
         >
+          {/* {console.log(post.mappingFields[1].value)} */}
           <div className="flex justify-between">
             <div className="flex items-center gap-4">
               <img
@@ -60,7 +61,7 @@ const FeedBox = () => {
             </button>
           </div>
           <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
-          <div className="flex flex-col gap-2">
+          <Link to={`/post/${post.id}`} className="flex flex-col gap-2">
             <h2 className="text-lg font-semibold line-clamp-2 text-gray-800">
               {post?.title}
             </h2>
@@ -68,10 +69,10 @@ const FeedBox = () => {
               dangerouslySetInnerHTML={{ __html: post?.shortContent as string }}
               className="text-gray-600 text-sm md:text-[1rem] md:leading-6"
             ></div>
-          </div>
+          </Link>
 
           {post.reactionsCount !== 0 ? (
-            <div className="flex transition-all duration-150">
+            <div className="flex">
               <span
                 aria-label="👍, +1, thumbsup"
                 className="bg-gray-100 flex gap-1 items-center pb-2 pt-1 pr-3 pl-1 rounded-full"
