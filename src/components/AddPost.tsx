@@ -24,7 +24,7 @@ const AddPost = () => {
       >
         <button
           onClick={() => setTrigerAddPost(!trigerAddPost)}
-          className="bg-blue-50 mb-5 p-3 hover:bg-blue-100 transition-all w-full duration-150 rounded-sm"
+          className="bg-blue-50 mb-5 p-3 hover:bg-blue-100 outline-none transition-all w-full duration-150 rounded-sm"
         >
           <h1 className="text-xl text-gray-600">What's on your mind?</h1>
         </button>

@@ -4,7 +4,6 @@ import {
 } from '@tribeplatform/react-sdk/hooks';
 import { ThumbUpIcon } from '@heroicons/react/outline';
 import { ThumbUpIcon as ThumbUpIconSolid } from '@heroicons/react/solid';
-import { Post } from '@tribeplatform/gql-client/types';
 
 interface Props {
   post: any;

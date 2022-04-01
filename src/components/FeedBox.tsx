@@ -2,13 +2,15 @@ import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
 import { Link } from 'react-router-dom';
+import LikeBtn from './LikeBtn';
 
 import {
   ShareIcon,
   BellIcon,
   DotsHorizontalIcon,
 } from '@heroicons/react/outline';
-import LikeBtn from './LikeBtn';
+import { useState } from 'react';
+import FeedBoxMenu from './FeedBoxMenu';
 
 const FeedBox = () => {
   const { data } = useFeed({
@@ -30,14 +32,16 @@ const FeedBox = () => {
   });
   const { nodes: posts } = simplifyPaginatedResult<Post>(data);
 
+  const [trigerFeedBoxMenu, setTrigerFeedBoxMenu] = useState(false);
+
   return (
     <section className="container flex flex-col gap-6 mb-10">
       {posts.map((post, i) => (
         <article
-          className="flex flex-col gap-4  bg-white px-5 py-7 rounded-lg shadow-sm"
+          className="flex flex-col gap-4  bg-white px-5 py-7 rounded-lg shadow-sm relative"
           key={post?.id}
         >
-          {/* {console.log(post.mappingFields[1].value)} */}
+          <FeedBoxMenu post={post} trigerFeedBoxMenu={trigerFeedBoxMenu} />
           <div className="flex justify-between">
             <div className="flex items-center gap-4">
               <img
@@ -57,7 +61,10 @@ const FeedBox = () => {
               </div>
             </div>
             <button aria-label="more">
-              <DotsHorizontalIcon className="w-5 text-gary-500" />
+              <DotsHorizontalIcon
+                className="w-5 text-gary-500"
+                onClick={() => setTrigerFeedBoxMenu(!trigerFeedBoxMenu)}
+              />
             </button>
           </div>
           <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
