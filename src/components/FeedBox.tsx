@@ -8,6 +8,7 @@ import { ShareIcon, BellIcon } from '@heroicons/react/outline';
 import FeedBoxMenu from './FeedBoxMenu';
 import AddPost from './AddPost';
 import WelcomeBox from './WelcomeBox';
+import SideMenu from './SideMenu';
 
 const FeedBox = () => {
   const { data } = useFeed({
@@ -30,11 +31,11 @@ const FeedBox = () => {
   const { nodes: posts } = simplifyPaginatedResult<Post>(data);
 
   return (
-    <div className="main-container custom-grid">
-      <WelcomeBox />
-      <div>
+    <div className="main-container custom-grid grid gap-2 lg:gap-5 justify-center xl:gap-6">
+      <SideMenu />
+      <div className="col-span-3 xl:col-span-1">
         <AddPost />
-        <section className="flex flex-col gap-6 mb-10">
+        <section className="flex flex-col gap-6 mb-10 ">
           {posts.map((post) => (
             <article
               className="flex flex-col gap-4 box relative"
@@ -103,6 +104,7 @@ const FeedBox = () => {
           ))}
         </section>
       </div>
+      <WelcomeBox />
     </div>
   );
 };

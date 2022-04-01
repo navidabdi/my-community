@@ -13,7 +13,7 @@
     @apply w-[90%] m-auto;
   }
   .main-container {
-    @apply w-[90%] m-auto xl:w-[80%];
+    @apply w-[90%] m-auto md:w-[70%] xl:w-[90%];
   }
   .input-label {
     @apply text-gray-600 text-sm font-semibold mb-2 block;
@@ -30,6 +30,9 @@
   .box {
     @apply bg-white px-5 py-7 rounded-lg shadow-sm;
   }
+  .aside-menu-btn {
+    @apply flex gap-4 items-center w-full py-2 px-4 text-gray-700 rounded-md transition-all duration-100 ease-in hover:bg-blue-100/60;
+  }
   figure {
     @apply mb-3;
   }
@@ -37,8 +40,6 @@
     @apply text-[.875rem] bg-blue-50/70 sm:text-[1rem];
   }
   .custom-grid {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    gap: 2rem;
+    grid-template-columns: 1fr 2fr 1fr;
   }
 }
