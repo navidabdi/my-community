@@ -1,51 +1,49 @@
 import { TrashIcon, PencilAltIcon } from '@heroicons/react/outline';
-import DeletePost from './DeletePost';
 
 import { Post } from '@tribeplatform/gql-client/types';
 import { useDeletePost } from '@tribeplatform/react-sdk/hooks';
 import { hasScopesPermission } from '@tribeplatform/gql-client/permissions';
+import { useState } from 'react';
 
 interface Props {
-  trigerFeedBoxMenu: any;
   post: Post;
 }
 
 const FeedBoxMenu: React.FC<Props> = (props: Props) => {
-  const { post, trigerFeedBoxMenu } = props;
-
-  const { mutate: deletePost } = useDeletePost();
+  const { post } = props;
+  const { mutateAsync: deletePost } = useDeletePost();
   const [canDelete] = hasScopesPermission(post, ['deletePost']);
+
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
   if (!canDelete) return null;
 
   return (
-    <>
-      {trigerFeedBoxMenu && (
-        <nav
-          className={`py-1 bg-white absolute right-10 top-16 transition-transform duration-200 ease-in-out w-[13rem] rounded-md shadow-lg bg-surface-50 border border-blue-100 focus-visible:ring focus:outline-none ${
-            trigerFeedBoxMenu
-              ? 'scale-100 pointer-events-auto opacity-100'
-              : 'scale-0 pointer-events-none opacity-0'
-          }`}
-        >
-          <button className="profile-nav-link">
-            <PencilAltIcon className="w-5 mr-3" />
-            Edit
-          </button>
-          <button
-            className="profile-nav-link"
-            onClick={() =>
-              deletePost({
-                id: post.id,
-              })
-            }
-          >
-            <TrashIcon className="w-5 mr-3" />
-            Delete
-          </button>
-        </nav>
-      )}
-    </>
+    <div className="flex gap-3">
+      <button
+        aria-label="Edit"
+        className="text-gray-500 focus:text-blue-800 transition-all duration-150 ease-in hover:text-blue-600"
+      >
+        <PencilAltIcon className="w-6 h-6 " />
+      </button>
+      <button
+        aria-label="Delete"
+        className={`text-gray-500 transition-all duration-150 ease-in focus:text-red-800 hover:text-red-600 
+        ${isDeleted ? 'animate-bounce' : ''}`}
+        onClick={() =>
+          deletePost({
+            id: post.id,
+          }).then(() => {
+            setIsDeleted(true);
+            setTimeout(() => {
+              setIsDeleted(false);
+            }, 1500);
+          })
+        }
+      >
+        <TrashIcon className="w-6 h-6" />
+      </button>
+    </div>
   );
 };
 
