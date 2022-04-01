@@ -13,9 +13,9 @@ const Header = () => {
       <header className="bg-white py-4 mb-6 shadow-sm">
         <nav className="container-xl items-center flex justify-between">
           <Link to="/">
-            <h1 className="sm:text-lg lg:text-xl font-bold text-blue-900">
+            <h2 className="sm:text-lg lg:text-xl font-bold text-blue-900">
               Dev Community
-            </h1>
+            </h2>
           </Link>
           {!user && (
             <div className="flex gap-5 items-center">

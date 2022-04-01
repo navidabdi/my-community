@@ -62,7 +62,7 @@ const FeedBox = () => {
           </div>
           <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
           <Link to={`/post/${post.id}`} className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold line-clamp-2 text-gray-800">
+            <h2 className="text-lg md:text-xl font-semibold line-clamp-2 text-gray-800">
               {post?.title}
             </h2>
             <div
