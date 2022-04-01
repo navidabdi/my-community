@@ -1,16 +1,25 @@
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
+
 import {
-  ThumbUpIcon,
   ShareIcon,
   BellIcon,
   DotsHorizontalIcon,
 } from '@heroicons/react/outline';
+import LikeBtn from './LikeBtn';
+import { useEffect } from 'react';
 
 const FeedBox = () => {
   const { data } = useFeed({
     fields: {
+      reactions: {
+        fields: 'all',
+        variables: {
+          limit: 10,
+        },
+      },
+      authMemberProps: 'all',
       createdBy: {
         member: 'basic',
       },
@@ -57,20 +66,33 @@ const FeedBox = () => {
             </h2>
             <div
               dangerouslySetInnerHTML={{ __html: post?.shortContent as string }}
-              className="text-gray-600 text-sm"
+              className="text-gray-600 text-sm md:text-[1rem] md:leading-6"
             ></div>
           </div>
+
+          {post.reactionsCount !== 0 ? (
+            <div className="flex transition-all duration-150">
+              <span
+                aria-label="👍, +1, thumbsup"
+                className="bg-gray-100 flex gap-1 items-center pb-2 pt-1 pr-3 pl-1 rounded-full"
+              >
+                <span className="text-2xl font-semibold">👍</span>
+                <span>{post.reactionsCount}</span>
+              </span>
+            </div>
+          ) : (
+            ''
+          )}
+
           <div className="flex justify-between gap-3 mt-3">
-            <button className="feed-box-btn group">
-              <ThumbUpIcon className="w-5 h-5 group-hover:-rotate-12" />
-              <span>Like</span>
-            </button>
+            <LikeBtn post={post} />
+
             <button className="feed-box-btn group hidden sm:flex">
-              <BellIcon className="w-5 h-5 group-hover:-rotate-12" />
+              <BellIcon className="w-6 h-6 group-hover:-rotate-12" />
               <span>Following</span>
             </button>
             <button className="feed-box-btn group">
-              <ShareIcon className="w-5 h-5 group-hover:-rotate-12" />
+              <ShareIcon className="w-6 h-6 group-hover:-rotate-12" />
               <span>Share</span>
             </button>
           </div>

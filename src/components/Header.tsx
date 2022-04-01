@@ -14,7 +14,7 @@ const Header = () => {
         <nav className="container-xl items-center flex justify-between">
           <Link to="/">
             <h1 className="sm:text-lg lg:text-xl font-bold text-blue-900">
-              Developers Community
+              Dev Community
             </h1>
           </Link>
           {!user && (
