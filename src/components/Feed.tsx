@@ -6,6 +6,8 @@ import AddPost from './AddPost';
 import WelcomeBox from './WelcomeBox';
 import SideMenu from './SideMenu';
 import PostBox from './PostBox';
+import ProfileBox from './ProfileBox';
+import { useTribeClient } from '@tribeplatform/react-sdk';
 
 const FeedBox = () => {
   const { data } = useFeed({
@@ -26,7 +28,7 @@ const FeedBox = () => {
     },
   });
   const { nodes: posts } = simplifyPaginatedResult<Post>(data);
-
+  const { client } = useTribeClient();
   return (
     <div className="main-container custom-grid grid gap-2 lg:gap-5 justify-center xl:gap-6">
       <SideMenu />
@@ -34,11 +36,11 @@ const FeedBox = () => {
         <AddPost />
         <section className="flex flex-col gap-6 mb-10 ">
           {posts.map((post) => (
-            <PostBox post={post} />
+            <PostBox post={post} key={post.id} />
           ))}
         </section>
       </div>
-      <WelcomeBox />
+      {localStorage.accessToken ? <ProfileBox /> : <WelcomeBox />}
     </div>
   );
 };
