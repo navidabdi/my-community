@@ -4,6 +4,7 @@ import {
 } from '@tribeplatform/react-sdk/hooks';
 import { ThumbUpIcon } from '@heroicons/react/outline';
 import { ThumbUpIcon as ThumbUpIconSolid } from '@heroicons/react/solid';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   post: any;
@@ -17,21 +18,26 @@ const LikeBtn: React.FC<Props> = (props: Props) => {
     (reaction: { reacted: any; reaction: string }) =>
       reaction.reacted && reaction.reaction === '+1'
   );
+  const navigate = useNavigate();
   return (
     <button
       className="feed-box-btn group"
       onClick={() => {
-        reacted
-          ? downvote({
-              postId: post?.id,
-              reaction: '+1',
-            })
-          : upvote({
-              postId: post?.id,
-              input: {
+        if (localStorage.accessToken) {
+          reacted
+            ? downvote({
+                postId: post?.id,
                 reaction: '+1',
-              },
-            });
+              })
+            : upvote({
+                postId: post?.id,
+                input: {
+                  reaction: '+1',
+                },
+              });
+        } else {
+          navigate('/login');
+        }
       }}
     >
       {reacted && (

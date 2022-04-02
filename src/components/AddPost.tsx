@@ -3,6 +3,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 import { useAddPost } from '@tribeplatform/react-sdk/hooks';
 import { PostMappingTypeEnum } from '@tribeplatform/gql-client/types';
+import { useNavigate } from 'react-router-dom';
 
 const AddPost = () => {
   const [data, setData] = useState<string>(`<p>What's New?</p>`);
@@ -12,6 +13,8 @@ const AddPost = () => {
 
   const { mutateAsync: addPost } = useAddPost();
 
+  const navigate = useNavigate();
+
   return (
     <section className=" flex flex-col gap-6 mb-10">
       <div
@@ -20,7 +23,11 @@ const AddPost = () => {
         }`}
       >
         <button
-          onClick={() => setTrigerAddPost(!trigerAddPost)}
+          onClick={() => {
+            localStorage.accessToken
+              ? setTrigerAddPost(!trigerAddPost)
+              : navigate('/login');
+          }}
           className="bg-blue-50 mb-5 p-3 hover:bg-blue-100 outline-none transition-all w-full duration-150 rounded-sm"
         >
           <h1 className="text-xl text-gray-600">What's on your mind?</h1>

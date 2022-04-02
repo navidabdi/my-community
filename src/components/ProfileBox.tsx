@@ -5,7 +5,6 @@ const ProfileBox = () => {
   return (
     <aside className="hidden col-span-3 xl:col-span-1 xl:block">
       <div className="box text-gray-600 p-0 overflow-hidden">
-        {console.log(authMember, isLoading)}
         <div className="relative">
           <img
             src="https://nabiabdi.tribeplatform.com/images/banners/banner-2.jpg"

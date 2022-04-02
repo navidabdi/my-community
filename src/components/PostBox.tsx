@@ -5,7 +5,11 @@ import LikeBtn from './LikeBtn';
 import { ShareIcon, BellIcon } from '@heroicons/react/outline';
 import FeedBoxMenu from './FeedBoxMenu';
 
-const PostBox = (props: { post: Post }) => {
+interface Props {
+  post: Post | undefined;
+}
+
+const PostBox: React.FC<Props> = (props: Props) => {
   const { post } = props;
 
   const profileLinkId =
@@ -34,7 +38,7 @@ const PostBox = (props: { post: Post }) => {
         <FeedBoxMenu post={post} />
       </div>
       <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
-      <Link to={`/post/${post.id}`} className="flex flex-col gap-2">
+      <Link to={`/post/${post?.id}`} className="flex flex-col gap-2">
         <h2 className="text-lg md:text-xl font-semibold line-clamp-2 text-gray-800">
           {post?.title}
         </h2>
@@ -46,14 +50,14 @@ const PostBox = (props: { post: Post }) => {
         ></div>
       </Link>
 
-      {post.reactionsCount !== 0 ? (
+      {post?.reactionsCount !== 0 ? (
         <div className="flex">
           <span
             aria-label="👍, +1, thumbsup"
             className="bg-gray-100 flex gap-1 items-center pb-2 pt-1 pr-3 pl-1 rounded-full"
           >
             <span className="text-2xl font-semibold">👍</span>
-            <span>{post.reactionsCount}</span>
+            <span>{post?.reactionsCount}</span>
           </span>
         </div>
       ) : (
