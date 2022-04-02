@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 const WelcomeBox = () => {
   return (
-    <aside className="col-span-3 xl:col-span-1">
-      <div className="box">
+    <aside className="hidden col-span-3 xl:col-span-1 xl:block">
+      <div className="box text-gray-600">
         <h3 className="text-2xl font-bold text-blue-900 mb-3">
           Hello There 👋
         </h3>
-        <p className="mb-3">Welcome to Tribe Campfire</p>
+        <p className="mb-3">Welcome to Dev Community</p>
         <p className="mb-3">
           Connect, share, and engage with community and build relationships.
         </p>
