@@ -3,11 +3,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 import { useAddPost } from '@tribeplatform/react-sdk/hooks';
 import { PostMappingTypeEnum } from '@tribeplatform/gql-client/types';
-import { useNavigate } from 'react-router-dom';
 
 const AddPost = () => {
-  const navigate = useNavigate();
-
   const [data, setData] = useState<string>(`<p>What's New?</p>`);
   const [title, setTitle] = useState<string>('');
 
