@@ -5,11 +5,7 @@ import { useDeletePost } from '@tribeplatform/react-sdk/hooks';
 import { hasScopesPermission } from '@tribeplatform/gql-client/permissions';
 import { useState } from 'react';
 
-interface Props {
-  post: Post;
-}
-
-const FeedBoxMenu: React.FC<Props> = (props: Props) => {
+const FeedBoxMenu = (props: { post: Post }) => {
   const { post } = props;
   const { mutateAsync: deletePost } = useDeletePost();
   const [canDelete] = hasScopesPermission(post, ['deletePost']);
@@ -37,7 +33,7 @@ const FeedBoxMenu: React.FC<Props> = (props: Props) => {
             setIsDeleted(true);
             setTimeout(() => {
               setIsDeleted(false);
-            }, 1500);
+            }, 2000);
           })
         }
       >

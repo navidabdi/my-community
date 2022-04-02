@@ -7,9 +7,18 @@ import {
   AnnotationIcon,
 } from '@heroicons/react/outline';
 
-const SideMenu = () => {
+import { mobileMenuTrigerAtom } from '../atoms/MobileMenuTrigerAtom';
+import { useRecoilState } from 'recoil';
+
+const MobileMenu = () => {
+  const [mobileMenuTriger] = useRecoilState(mobileMenuTrigerAtom);
+
   return (
-    <aside className="hidden xl:block xl:col-span-1 ">
+    <aside
+      className={` absolute bg-white z-10 left-0 top-0 min-h-screen pt-28 shadow-2xl px-5 transition-transform duration-200 ease-in-out md:w-[300px] xl:hidden ${
+        mobileMenuTriger ? ' translate-x-0' : 'translate-x-[-110%]'
+      }`}
+    >
       <nav className="flex flex-col gap-2">
         <button className="aside-menu-btn bg-gray-200">
           <HomeIcon className="w-6" /> <span>Home</span>
@@ -37,4 +46,4 @@ const SideMenu = () => {
   );
 };
 
-export default SideMenu;
+export default MobileMenu;
