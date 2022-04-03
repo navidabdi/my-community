@@ -1,4 +1,4 @@
-import { Feed, Header, SignUp } from './components';
+import { MainPage, Header, SignUp } from './components';
 import { Routes, Route } from 'react-router-dom';
 import { Login, PostPage } from './components';
 import { RecoilRoot } from 'recoil';
@@ -9,7 +9,7 @@ function App() {
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/" element={<Feed />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/post/:postId" element={<PostPage />} />
