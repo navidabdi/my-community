@@ -7,6 +7,20 @@ const PostPage = () => {
   const postId = params.postId as string;
   const { data: post } = usePost({
     id: postId,
+    fields: 'all',
+    // fields: {
+    //   replies: {
+    //     variables: {
+    //       limit: 100,
+    //     },
+    //     fields: {
+    //       createdBy: {
+    //         member: 'all',
+    //       },
+    //       authMemberProps: 'all',
+    //     },
+    //   },
+    // },
   });
 
   return (

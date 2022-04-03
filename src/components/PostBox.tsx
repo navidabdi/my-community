@@ -4,6 +4,9 @@ import LikeBtn from './LikeBtn';
 
 import { ShareIcon, BellIcon } from '@heroicons/react/outline';
 import FeedBoxMenu from './FeedBoxMenu';
+import AddComment from './AddComment';
+import CommentList from './CommentList';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   post: Post | undefined;
@@ -14,10 +17,12 @@ const PostBox: React.FC<Props> = (props: Props) => {
 
   const profileLinkId =
     post?.createdBy?.member?.profilePictureId ||
-    post?.owner?.member?.profilePicture?.id;
+    post?.owner?.member?.profilePictureId;
   const userName = post?.createdBy?.member?.name || post?.owner?.member?.name;
   const userTagLine =
     post?.createdBy?.member?.tagline || post?.owner?.member?.tagline;
+
+  const location = useLocation();
 
   return (
     <article className="flex flex-col gap-4 box relative mb-5" key={post?.id}>
@@ -26,7 +31,7 @@ const PostBox: React.FC<Props> = (props: Props) => {
           <img
             loading="lazy"
             className="w-10 h-10 rounded-full"
-            src={`https://tribe-s3-production.imgix.net/${profileLinkId}?w=200&h=200&auto=compress,format&dl`}
+            src={`https://tribe-s3-production.imgix.net/${profileLinkId}?w=200&h=200&auto=compress`}
             alt={`${userName}`}
           />
 
@@ -76,6 +81,12 @@ const PostBox: React.FC<Props> = (props: Props) => {
           <span>Share</span>
         </button>
       </div>
+      {location.pathname.includes('/post') && (
+        <>
+          <CommentList post={post} />
+          <AddComment post={post} />
+        </>
+      )}
     </article>
   );
 };

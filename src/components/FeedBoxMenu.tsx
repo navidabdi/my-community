@@ -6,13 +6,13 @@ import { hasScopesPermission } from '@tribeplatform/gql-client/permissions';
 import { useState } from 'react';
 
 interface Props {
-  post: any;
+  post: Post | undefined;
 }
 
 const FeedBoxMenu: React.FC<Props> = (props: Props) => {
   const { post } = props;
   const { mutateAsync: deletePost } = useDeletePost();
-  const [canDelete] = hasScopesPermission(post, ['deletePost']);
+  const [canDelete] = hasScopesPermission(post!, ['deletePost']);
 
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
@@ -32,7 +32,7 @@ const FeedBoxMenu: React.FC<Props> = (props: Props) => {
         ${isDeleted ? 'animate-bounce' : ''}`}
         onClick={() =>
           deletePost({
-            id: post.id,
+            id: post?.id!,
           }).then(() => {
             setIsDeleted(true);
             setTimeout(() => {
