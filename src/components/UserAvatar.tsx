@@ -1,0 +1,28 @@
+import { Post } from '@tribeplatform/gql-client/types';
+
+const UserAvatar = ({ post }: { post?: Post }) => {
+  const profileLinkId =
+    post?.createdBy?.member?.profilePictureId ||
+    post?.owner?.member?.profilePictureId;
+
+  const firstLetterName = post?.createdBy?.member?.name;
+
+  return (
+    <div>
+      {profileLinkId ? (
+        <img
+          loading="lazy"
+          className="w-10 h-10 rounded-full"
+          src={`https://tribe-s3-production.imgix.net/${profileLinkId}?w=200&h=200&auto=compress`}
+          alt={`${post?.createdBy?.member?.name}`}
+        />
+      ) : (
+        <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center font-bold text-blue-700">
+          {firstLetterName?.split('')[0]}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserAvatar;

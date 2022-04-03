@@ -6,6 +6,7 @@ import { ShareIcon, BellIcon } from '@heroicons/react/outline';
 import FeedBoxMenu from './FeedBoxMenu';
 import AddComment from './AddComment';
 import CommentList from './CommentList';
+import UserAvatar from './UserAvatar';
 import { useLocation } from 'react-router-dom';
 
 const PostBox = (props: { post?: Post }) => {
@@ -23,15 +24,8 @@ const PostBox = (props: { post?: Post }) => {
   return (
     <article className="flex flex-col gap-4 box relative mb-5" key={post?.id}>
       <div className="flex justify-between">
-        {console.log(post)}
         <div className="flex items-center gap-4">
-          <img
-            loading="lazy"
-            className="w-10 h-10 rounded-full"
-            src={`https://tribe-s3-production.imgix.net/${profileLinkId}?w=200&h=200&auto=compress`}
-            alt={`${userName}`}
-          />
-
+          <UserAvatar post={post} />
           <div className="author-info">
             <p className="text-gray-700 font-semibold leading-4">{userName}</p>
             <span className="text-sm text-gray-500">{userTagLine}</span>

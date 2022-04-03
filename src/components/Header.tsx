@@ -20,6 +20,8 @@ const Header = () => {
   const { data: user } = useAuthMember();
   const [trigerProfileMenu, setTrigerProfileMenu] = useState<boolean>(false);
 
+  const firstLetterName = user?.name;
+
   return (
     <>
       <header className="bg-white py-4 mb-6 shadow-sm z-20 relative">
@@ -60,14 +62,23 @@ const Header = () => {
               <button className="bg-blue-600 transition-all duration-150 border group border-blue-600 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
                 <PlusIcon className="w-5 text-white group-hover:rotate-12" />
               </button>
+              {user?.profilePictureId ? (
+                <img
+                  onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
+                  loading="lazy"
+                  className="w-10 h-10 rounded-full cursor-pointer"
+                  src={`https://tribe-s3-production.imgix.net/${user?.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
+                  alt={`${user?.name}`}
+                />
+              ) : (
+                <div
+                  onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
+                  className="w-10 h-10 bg-blue-50 cursor-pointer rounded-full flex items-center justify-center font-bold text-blue-700"
+                >
+                  {firstLetterName?.split('')[0]}
+                </div>
+              )}
 
-              <img
-                onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
-                loading="lazy"
-                className="w-10 h-10 rounded-full cursor-pointer"
-                src={`https://tribe-s3-production.imgix.net/${user?.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
-                alt={`${user?.name}`}
-              />
               <ProfileMenu trigerProfileMenu={trigerProfileMenu} />
             </div>
           )}
