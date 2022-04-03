@@ -9,12 +9,9 @@ import {
   MenuAlt1Icon,
   MenuIcon,
 } from '@heroicons/react/outline';
-import { mobileMenuTrigerAtom } from '../../atoms/MobileMenuTrigerAtom';
-import { useRecoilState } from 'recoil';
 
 const Header = () => {
-  const [mobileMenuTriger, setMobileMenuTriger] =
-    useRecoilState(mobileMenuTrigerAtom);
+  const [mobileMenuTriger, setMobileMenuTriger] = useState<boolean>(false);
   const { data: user } = useAuthMember();
   const [trigerProfileMenu, setTrigerProfileMenu] = useState<boolean>(false);
   const userName = user?.name;
@@ -81,7 +78,7 @@ const Header = () => {
           )}
         </nav>
       </header>
-      <MobileMenu />
+      <MobileMenu mobileMenuTriger={mobileMenuTriger} />
     </>
   );
 };

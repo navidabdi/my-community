@@ -7,12 +7,7 @@ import {
   AnnotationIcon,
 } from '@heroicons/react/outline';
 
-import { mobileMenuTrigerAtom } from '../../atoms/MobileMenuTrigerAtom';
-import { useRecoilState } from 'recoil';
-
-const MobileMenu = () => {
-  const [mobileMenuTriger] = useRecoilState(mobileMenuTrigerAtom);
-
+const MobileMenu = ({ mobileMenuTriger }: { mobileMenuTriger: boolean }) => {
   return (
     <aside
       className={` absolute bg-white z-10 left-0 top-0 min-h-screen pt-28 shadow-2xl px-5 transition-transform duration-200 ease-in-out md:w-[300px] xl:hidden ${
