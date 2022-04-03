@@ -1,5 +1,4 @@
 import { XIcon, ArrowsExpandIcon } from '@heroicons/react/outline';
-import { Post } from '@tribeplatform/gql-client/types';
 import { useState } from 'react';
 
 import {
@@ -11,7 +10,6 @@ import {
 } from './ShareIcons';
 
 const ShareBox = ({
-  setShareLink,
   setTrigerShareBox,
   shareLink,
 }: {
@@ -64,7 +62,7 @@ const ShareBox = ({
             <input
               className="w-full rounded-md h-full p-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-blue-600 overflow-hidden"
               type="text"
-              value={linkToShare}
+              defaultValue={linkToShare}
             />
             <span
               className={`p-3 w-20 h-full pointer-events-none rounded-md rounded-l-none text-center absolute right-0 top-[50%] bg-blue-50 translate-y-[-50%]  ${

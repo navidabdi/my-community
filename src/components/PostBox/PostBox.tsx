@@ -21,10 +21,6 @@ const PostBox = ({
   trigerShareBox?: boolean;
   setShareLink?: any;
 }) => {
-  const userName = post?.createdBy?.member?.name || post?.owner?.member?.name;
-  const userTagLine =
-    post?.createdBy?.member?.tagline || post?.owner?.member?.tagline;
-
   const location = useLocation();
   const { data: authMember } = useAuthMember();
 
@@ -34,8 +30,12 @@ const PostBox = ({
         <div className="flex items-center gap-4">
           <UserAvatar post={post} />
           <div className="author-info">
-            <p className="text-gray-700 font-semibold leading-4">{userName}</p>
-            <span className="text-sm text-gray-500">{userTagLine}</span>
+            <p className="text-gray-700 font-semibold leading-4">
+              {post?.createdBy?.member?.name}
+            </p>
+            <span className="text-sm text-gray-500">
+              {post?.createdBy?.member?.tagline}
+            </span>
           </div>
         </div>
         <PostBoxMenu post={post} />
@@ -81,7 +81,6 @@ const PostBox = ({
             setShareLink(post?.id);
           }}
         >
-          {/* {console.log(post)} */}
           <ShareIcon className="w-6 h-6 group-hover:-rotate-12" />
           <span>Share</span>
         </button>
