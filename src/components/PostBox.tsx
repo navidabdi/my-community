@@ -8,18 +8,15 @@ import AddComment from './AddComment';
 import CommentList from './CommentList';
 import UserAvatar from './UserAvatar';
 import { useLocation } from 'react-router-dom';
+import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
-const PostBox = (props: { post?: Post }) => {
-  const { post } = props;
-
-  const profileLinkId =
-    post?.createdBy?.member?.profilePictureId ||
-    post?.owner?.member?.profilePictureId;
+const PostBox = ({ post }: { post?: Post }) => {
   const userName = post?.createdBy?.member?.name || post?.owner?.member?.name;
   const userTagLine =
     post?.createdBy?.member?.tagline || post?.owner?.member?.tagline;
 
   const location = useLocation();
+  const { data: authMember } = useAuthMember();
 
   return (
     <article className="flex flex-col gap-4 box relative mb-5" key={post?.id}>
@@ -75,7 +72,7 @@ const PostBox = (props: { post?: Post }) => {
       {location.pathname.includes('/post') && (
         <>
           <CommentList post={post} />
-          {localStorage.accessToken && <AddComment post={post} />}
+          {authMember && <AddComment post={post} />}
         </>
       )}
     </article>

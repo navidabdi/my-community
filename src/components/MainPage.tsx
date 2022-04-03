@@ -3,8 +3,11 @@ import WelcomeBox from './WelcomeBox';
 import SideMenu from './SideMenu';
 import ProfileBox from './ProfileBox';
 import Feed from './Feed';
+import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
 const MainPage = () => {
+  const { data: authMember } = useAuthMember();
+
   return (
     <div className="main-container custom-grid grid gap-2 lg:gap-5 justify-center xl:gap-6">
       <SideMenu />
@@ -12,7 +15,7 @@ const MainPage = () => {
         <AddPost />
         <Feed />
       </div>
-      {localStorage.accessToken ? <ProfileBox /> : <WelcomeBox />}
+      {authMember ? <ProfileBox /> : <WelcomeBox />}
     </div>
   );
 };

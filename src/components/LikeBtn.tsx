@@ -5,13 +5,10 @@ import {
 import { ThumbUpIcon } from '@heroicons/react/outline';
 import { ThumbUpIcon as ThumbUpIconSolid } from '@heroicons/react/solid';
 import { useNavigate } from 'react-router-dom';
+import { Post } from '@tribeplatform/gql-client/types';
+import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
-interface Props {
-  post: any;
-}
-
-const LikeBtn: React.FC<Props> = (props: Props) => {
-  const { post } = props;
+const LikeBtn = ({ post }: { post?: Post }) => {
   const { mutate: upvote } = useAddReaction();
   const { mutate: downvote } = useRemoveReaction();
   const reacted = post?.reactions?.some(
@@ -19,18 +16,20 @@ const LikeBtn: React.FC<Props> = (props: Props) => {
       reaction.reacted && reaction.reaction === '+1'
   );
   const navigate = useNavigate();
+  const { data: authMember } = useAuthMember();
+
   return (
     <button
       className="feed-box-btn group"
       onClick={() => {
-        if (localStorage.accessToken) {
+        if (authMember) {
           reacted
             ? downvote({
-                postId: post?.id,
+                postId: post?.id!,
                 reaction: '+1',
               })
             : upvote({
-                postId: post?.id,
+                postId: post?.id!,
                 input: {
                   reaction: '+1',
                 },

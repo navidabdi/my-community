@@ -20,7 +20,7 @@ const Header = () => {
   const { data: user } = useAuthMember();
   const [trigerProfileMenu, setTrigerProfileMenu] = useState<boolean>(false);
 
-  const firstLetterName = user?.name;
+  const userName = user?.name;
 
   return (
     <>
@@ -75,7 +75,7 @@ const Header = () => {
                   onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
                   className="w-10 h-10 bg-blue-50 cursor-pointer rounded-full flex items-center justify-center font-bold text-blue-700"
                 >
-                  {firstLetterName?.split('')[0]}
+                  {userName?.split('')[0]}
                 </div>
               )}
 
