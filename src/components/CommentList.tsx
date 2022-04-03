@@ -1,4 +1,5 @@
 import { Post } from '@tribeplatform/gql-client/types';
+import UserAvatar from './UserAvatar';
 
 const CommentList = ({ post }: { post?: Post }) => {
   return (
@@ -9,14 +10,10 @@ const CommentList = ({ post }: { post?: Post }) => {
           key={reply.id}
         >
           <div className="flex items-start gap-3">
-            <img
-              src={`https://tribe-s3-production.imgix.net/${reply?.createdBy?.member?.profilePictureId}?w=200&h=200&auto=compress`}
-              alt={reply?.owner?.member?.name!}
-              className="w-12 rounded-full"
-            />
-            <div>
+            <UserAvatar post={reply} />
+            <div className="flex-1">
               <p className="text-xs font-semibold">
-                {reply?.owner?.member?.name}
+                {reply?.createdBy?.member?.name}
                 <span className="font-normal"> says:</span>
               </p>
               <div
