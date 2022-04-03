@@ -42,7 +42,7 @@ const Header = () => {
               Dev Community
             </Link>
           </div>
-          {!user && (
+          {!user ? (
             <div className="flex gap-5 items-center">
               <Link
                 to="/login"
@@ -52,8 +52,7 @@ const Header = () => {
               </Link>
               <Link to="/signup">Sign Up</Link>
             </div>
-          )}
-          {user && (
+          ) : (
             <div className="relative flex gap-3">
               <button className="bg-blue-50 transition-all duration-150 border group border-blue-200 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer">
                 <BellIcon className="w-5 text-blue-900 group-hover:rotate-12" />
@@ -66,8 +65,8 @@ const Header = () => {
                 onClick={() => setTrigerProfileMenu(!trigerProfileMenu)}
                 loading="lazy"
                 className="w-10 h-10 rounded-full cursor-pointer"
-                src={`https://tribe-s3-production.imgix.net/${user.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
-                alt={`${user.name}`}
+                src={`https://tribe-s3-production.imgix.net/${user?.profilePictureId}?w=200&h=200&auto=compress,format&dl`}
+                alt={`${user?.name}`}
               />
               <ProfileMenu trigerProfileMenu={trigerProfileMenu} />
             </div>

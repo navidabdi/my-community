@@ -8,11 +8,7 @@ import AddComment from './AddComment';
 import CommentList from './CommentList';
 import { useLocation } from 'react-router-dom';
 
-interface Props {
-  post: Post | undefined;
-}
-
-const PostBox: React.FC<Props> = (props: Props) => {
+const PostBox = (props: { post?: Post }) => {
   const { post } = props;
 
   const profileLinkId =
@@ -27,6 +23,7 @@ const PostBox: React.FC<Props> = (props: Props) => {
   return (
     <article className="flex flex-col gap-4 box relative mb-5" key={post?.id}>
       <div className="flex justify-between">
+        {console.log(post)}
         <div className="flex items-center gap-4">
           <img
             loading="lazy"
@@ -84,7 +81,7 @@ const PostBox: React.FC<Props> = (props: Props) => {
       {location.pathname.includes('/post') && (
         <>
           <CommentList post={post} />
-          <AddComment post={post} />
+          {localStorage.accessToken && <AddComment post={post} />}
         </>
       )}
     </article>

@@ -10,18 +10,18 @@ const CommentList = ({ post }: { post?: Post }) => {
         >
           <div className="flex items-start gap-3">
             <img
-              src={`https://tribe-s3-production.imgix.net/${post?.owner?.member?.profilePictureId}?w=200&h=200&auto=compress`}
-              alt={reply.owner?.member?.name!}
+              src={`https://tribe-s3-production.imgix.net/${reply?.createdBy?.member?.profilePictureId}?w=200&h=200&auto=compress`}
+              alt={reply?.owner?.member?.name!}
               className="w-12 rounded-full"
             />
             <div>
               <p className="text-xs font-semibold">
-                {reply.owner?.member?.name}
+                {reply?.owner?.member?.name}
                 <span className="font-normal"> says:</span>
               </p>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: reply.shortContent as string,
+                  __html: reply?.shortContent as string,
                 }}
               />
             </div>
