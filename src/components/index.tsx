@@ -15,8 +15,10 @@ import CommentList from './PostBox/CommentList';
 import LikeBtn from './PostBox/LikeBtn';
 import PostBox from './PostBox/PostBox';
 import UserAvatar from './PostBox/UserAvatar';
+import ShareBox from './PostBox/ShareBox';
 
 export {
+  ShareBox,
   UserAvatar,
   PostBox,
   LikeBtn,

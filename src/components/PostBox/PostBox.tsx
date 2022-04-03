@@ -10,7 +10,17 @@ import UserAvatar from './UserAvatar';
 import { useLocation } from 'react-router-dom';
 import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
-const PostBox = ({ post }: { post?: Post }) => {
+const PostBox = ({
+  post,
+  setTrigerShareBox,
+  trigerShareBox,
+  setShareLink,
+}: {
+  post?: Post;
+  setTrigerShareBox?: any;
+  trigerShareBox?: boolean;
+  setShareLink?: any;
+}) => {
   const userName = post?.createdBy?.member?.name || post?.owner?.member?.name;
   const userTagLine =
     post?.createdBy?.member?.tagline || post?.owner?.member?.tagline;
@@ -64,7 +74,14 @@ const PostBox = ({ post }: { post?: Post }) => {
           <BellIcon className="w-6 h-6 group-hover:-rotate-12" />
           <span>Following</span>
         </button>
-        <button className="feed-box-btn group">
+        <button
+          className="feed-box-btn group"
+          onClick={() => {
+            setTrigerShareBox(!trigerShareBox);
+            setShareLink(post?.id);
+          }}
+        >
+          {/* {console.log(post)} */}
           <ShareIcon className="w-6 h-6 group-hover:-rotate-12" />
           <span>Share</span>
         </button>

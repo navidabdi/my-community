@@ -3,8 +3,14 @@ import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
 import InfiniteScroll from 'react-infinite-scroller';
 import PostBox from '../PostBox/PostBox';
+import ShareBox from '../PostBox/ShareBox';
+import { useState } from 'react';
 
 const Feed = () => {
+  const [trigerShareBox, setTrigerShareBox] = useState<boolean>(false);
+
+  const [shareLink, setShareLink] = useState<string>('');
+
   const { data, fetchNextPage, hasNextPage } = useFeed({
     fields: {
       reactions: {
@@ -32,8 +38,21 @@ const Feed = () => {
         hasMore={hasNextPage}
       >
         {posts.map((post) => (
-          <PostBox post={post} key={post.id} />
+          <PostBox
+            post={post}
+            setShareLink={setShareLink}
+            setTrigerShareBox={setTrigerShareBox}
+            trigerShareBox={trigerShareBox}
+            key={post.id}
+          />
         ))}
+        {trigerShareBox && (
+          <ShareBox
+            setTrigerShareBox={setTrigerShareBox}
+            shareLink={shareLink}
+            setShareLink={setShareLink}
+          />
+        )}
       </InfiniteScroll>
     </section>
   );
