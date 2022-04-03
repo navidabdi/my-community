@@ -7,7 +7,7 @@ import {
   AnnotationIcon,
 } from '@heroicons/react/outline';
 
-import { mobileMenuTrigerAtom } from '../atoms/MobileMenuTrigerAtom';
+import { mobileMenuTrigerAtom } from '../../atoms/MobileMenuTrigerAtom';
 import { useRecoilState } from 'recoil';
 
 const MobileMenu = () => {

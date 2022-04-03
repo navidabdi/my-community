@@ -1,10 +1,10 @@
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useState } from 'react';
 import { useAddPost } from '@tribeplatform/react-sdk/hooks';
 import { PostMappingTypeEnum } from '@tribeplatform/gql-client/types';
-import { useNavigate } from 'react-router-dom';
 import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddPost = () => {
   const [data, setData] = useState<string>(`<p>What's New?</p>`);

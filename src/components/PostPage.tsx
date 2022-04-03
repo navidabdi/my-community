@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { usePost } from '@tribeplatform/react-sdk/hooks';
-import PostBox from './PostBox';
+import PostBox from './PostBox/PostBox';
 
 const PostPage = () => {
   const params = useParams();

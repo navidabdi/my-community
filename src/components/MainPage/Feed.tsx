@@ -2,7 +2,7 @@ import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
 import InfiniteScroll from 'react-infinite-scroller';
-import PostBox from './PostBox';
+import PostBox from '../PostBox/PostBox';
 
 const Feed = () => {
   const { data, fetchNextPage, hasNextPage } = useFeed({

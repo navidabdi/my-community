@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LikeBtn from './LikeBtn';
 
 import { ShareIcon, BellIcon } from '@heroicons/react/outline';
-import FeedBoxMenu from './FeedBoxMenu';
+import PostBoxMenu from './PostBoxMenu';
 import AddComment from './AddComment';
 import CommentList from './CommentList';
 import UserAvatar from './UserAvatar';
@@ -28,7 +28,7 @@ const PostBox = ({ post }: { post?: Post }) => {
             <span className="text-sm text-gray-500">{userTagLine}</span>
           </div>
         </div>
-        <FeedBoxMenu post={post} />
+        <PostBoxMenu post={post} />
       </div>
       <div className="w-full border-t border-blue-100/50 my-1 menu-divider"></div>
       <Link to={`/post/${post?.id}`} className="flex flex-col gap-2">

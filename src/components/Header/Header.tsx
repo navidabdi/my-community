@@ -9,17 +9,14 @@ import {
   MenuAlt1Icon,
   MenuIcon,
 } from '@heroicons/react/outline';
-
-import { mobileMenuTrigerAtom } from '../atoms/MobileMenuTrigerAtom';
+import { mobileMenuTrigerAtom } from '../../atoms/MobileMenuTrigerAtom';
 import { useRecoilState } from 'recoil';
 
 const Header = () => {
   const [mobileMenuTriger, setMobileMenuTriger] =
     useRecoilState(mobileMenuTrigerAtom);
-
   const { data: user } = useAuthMember();
   const [trigerProfileMenu, setTrigerProfileMenu] = useState<boolean>(false);
-
   const userName = user?.name;
 
   return (

@@ -7,7 +7,7 @@ import {
   LogoutIcon,
 } from '@heroicons/react/outline';
 
-import { useLogout } from '../hooks/useLogout';
+import { useLogout } from '../../hooks/useLogout';
 
 interface Props {
   trigerProfileMenu: boolean;
