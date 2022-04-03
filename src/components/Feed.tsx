@@ -1,7 +1,7 @@
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
-
+import InfiniteScroll from 'react-infinite-scroller';
 import AddPost from './AddPost';
 import WelcomeBox from './WelcomeBox';
 import SideMenu from './SideMenu';
@@ -9,7 +9,7 @@ import PostBox from './PostBox';
 import ProfileBox from './ProfileBox';
 
 const FeedBox = () => {
-  const { data } = useFeed({
+  const { data, fetchNextPage, hasNextPage } = useFeed({
     fields: {
       reactions: {
         fields: 'all',
@@ -34,9 +34,15 @@ const FeedBox = () => {
       <div className="col-span-3 xl:col-span-1">
         <AddPost />
         <section className="flex flex-col gap-6 mb-10 ">
-          {posts.map((post) => (
-            <PostBox post={post} key={post.id} />
-          ))}
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={fetchNextPage}
+            hasMore={hasNextPage}
+          >
+            {posts.map((post) => (
+              <PostBox post={post} key={post.id} />
+            ))}
+          </InfiniteScroll>
         </section>
       </div>
       {localStorage.accessToken ? <ProfileBox /> : <WelcomeBox />}

@@ -20,7 +20,7 @@ const PostBox: React.FC<Props> = (props: Props) => {
     post?.createdBy?.member?.tagline || post?.owner?.member?.tagline;
 
   return (
-    <article className="flex flex-col gap-4 box relative" key={post?.id}>
+    <article className="flex flex-col gap-4 box relative mb-5" key={post?.id}>
       <div className="flex justify-between">
         <div className="flex items-center gap-4">
           <img
