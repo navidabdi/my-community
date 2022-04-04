@@ -78,6 +78,7 @@ const ShareBox = ({
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${linkToShare}`}
               target="_blank"
+              rel="noreferrer"
               className="share-btn"
             >
               <FacebookIcon />
@@ -85,6 +86,7 @@ const ShareBox = ({
             <a
               href={`https://twitter.com/share?url=${linkToShare}`}
               target="_blank"
+              rel="noreferrer"
               className="share-btn"
             >
               <TwitterIcon />
@@ -92,6 +94,7 @@ const ShareBox = ({
             <a
               href={`https://linkedin.com/shareArticle?url=${linkToShare}`}
               target="_blank"
+              rel="noreferrer"
               className="share-btn"
             >
               <LinkdinIcon />
@@ -99,6 +102,7 @@ const ShareBox = ({
             <a
               href={`https://web.whatsapp.com/send?text=What%27s%20New%3F%20${linkToShare}`}
               target="_blank"
+              rel="noreferrer"
               className="share-btn"
             >
               <WhatsAppIcon />
@@ -106,6 +110,7 @@ const ShareBox = ({
             <a
               href={`mailto:abc@example.com?subject=ShareLink=${linkToShare}`}
               className="share-btn"
+              rel="noreferrer"
             >
               <MailIcon />
             </a>

@@ -17,7 +17,7 @@ const ProfileBox = () => {
           {authMember?.profilePictureId ? (
             <img
               src={`https://tribe-s3-production.imgix.net/${authMember?.profilePictureId}?w=200&h=200&auto=compress`}
-              alt="profile picture"
+              alt={`${userName}`}
               className="w-28 border-4 object-cover border-white rounded-full absolute left-[50%] translate-x-[-50%] -bottom-10"
             />
           ) : (
