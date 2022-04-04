@@ -27,8 +27,8 @@
   "scripts": {
     "predeploy": "yarn build && yarn cp",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --max_old_space_size=8192 start",
+    "build": "react-scripts --max_old_space_size=8192 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cp": "cp ./build/index.html ./build/404.html"
