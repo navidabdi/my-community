@@ -28,7 +28,8 @@
     "predeploy": "yarn build && yarn cp",
     "deploy": "gh-pages -d build",
     "start": "react-scripts --max_old_space_size=8192 start",
-    "build": "react-scripts --max_old_space_size=8192 build",
+    "build": "set NODE_OPTIONS=--max_old_space_size=8192 && webpack --config webpack.prod.js",
+    "build-linux": "export NODE_OPTIONS='--max-old-space-size=8192' && webpack --config webpack.prod.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cp": "cp ./build/index.html ./build/404.html"
