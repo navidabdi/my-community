@@ -5,13 +5,14 @@ import InfiniteScroll from 'react-infinite-scroller';
 import PostBox from '../PostBox/PostBox';
 import ShareBox from '../PostBox/ShareBox';
 import { useState } from 'react';
+import Loading from '../Loading';
 
 const Feed = () => {
   const [trigerShareBox, setTrigerShareBox] = useState<boolean>(false);
 
   const [shareLink, setShareLink] = useState<string>('');
 
-  const { data, fetchNextPage, hasNextPage } = useFeed({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useFeed({
     fields: {
       reactions: {
         fields: 'all',
@@ -32,28 +33,28 @@ const Feed = () => {
 
   return (
     <section className="flex flex-col gap-6 mb-10 ">
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={fetchNextPage}
-        hasMore={hasNextPage}
-      >
-        {posts.map((post) => (
-          <PostBox
-            post={post}
-            setShareLink={setShareLink}
-            setTrigerShareBox={setTrigerShareBox}
-            trigerShareBox={trigerShareBox}
-            key={post.id}
-          />
-        ))}
-        {trigerShareBox && (
-          <ShareBox
-            setTrigerShareBox={setTrigerShareBox}
-            shareLink={shareLink}
-            setShareLink={setShareLink}
-          />
-        )}
-      </InfiniteScroll>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={fetchNextPage}
+          hasMore={hasNextPage}
+        >
+          {posts.map((post) => (
+            <PostBox
+              post={post}
+              setShareLink={setShareLink}
+              setTrigerShareBox={setTrigerShareBox}
+              trigerShareBox={trigerShareBox}
+              key={post.id}
+            />
+          ))}
+        </InfiniteScroll>
+      )}
+      {trigerShareBox && (
+        <ShareBox setTrigerShareBox={setTrigerShareBox} shareLink={shareLink} />
+      )}
     </section>
   );
 };

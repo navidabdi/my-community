@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { usePost } from '@tribeplatform/react-sdk/hooks';
 import PostBox from './PostBox/PostBox';
+import Loading from './Loading';
 
 const PostPage = () => {
   const params = useParams();
   const postId = params.postId as string;
-  const { data: post } = usePost({
+  const { data: post, isLoading } = usePost({
     id: postId,
     fields: {
       reactions: {
@@ -34,7 +35,7 @@ const PostPage = () => {
 
   return (
     <section className="container flex flex-col gap-6 mb-10">
-      <PostBox post={post} />
+      {isLoading ? <Loading /> : <PostBox post={post} />}
     </section>
   );
 };

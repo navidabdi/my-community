@@ -13,7 +13,6 @@ const ShareBox = ({
   setTrigerShareBox,
   shareLink,
 }: {
-  setShareLink: any;
   setTrigerShareBox: any;
   shareLink: string;
 }) => {
