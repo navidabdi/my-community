@@ -1,9 +1,10 @@
+import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+
 import AddPost from './AddPost';
 import WelcomeBox from './WelcomeBox';
 import SideMenu from './SideMenu';
 import ProfileBox from './ProfileBox';
 import Feed from './Feed';
-import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
 const MainPage = () => {
   const { data: authMember } = useAuthMember();

@@ -1,15 +1,16 @@
-import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useFeed } from '@tribeplatform/react-sdk/hooks';
+import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils';
+
+import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+
+import Loading from '../Loading';
 import PostBox from '../PostBox/PostBox';
 import ShareBox from '../PostBox/ShareBox';
-import { useState } from 'react';
-import Loading from '../Loading';
 
 const Feed = () => {
   const [trigerShareBox, setTrigerShareBox] = useState<boolean>(false);
-
   const [shareLink, setShareLink] = useState<string>('');
 
   const { data, fetchNextPage, hasNextPage, isLoading } = useFeed({

@@ -3,13 +3,10 @@ import { TrashIcon, PencilAltIcon } from '@heroicons/react/outline';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useDeletePost } from '@tribeplatform/react-sdk/hooks';
 import { hasScopesPermission } from '@tribeplatform/gql-client/permissions';
-import { useState } from 'react';
 
 const FeedBoxMenu = ({ post }: { post?: Post }) => {
-  const { mutateAsync: deletePost } = useDeletePost();
+  const { mutate: deletePost, isLoading } = useDeletePost();
   const [canDelete] = hasScopesPermission(post!, ['deletePost']);
-
-  const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
   if (!canDelete) return null;
 
@@ -24,15 +21,10 @@ const FeedBoxMenu = ({ post }: { post?: Post }) => {
       <button
         aria-label="Delete"
         className={`text-gray-500 transition-all duration-150 ease-in focus:text-red-800 hover:text-red-600 
-        ${isDeleted ? 'animate-bounce' : ''}`}
+        ${isLoading ? 'animate-bounce' : ''}`}
         onClick={() =>
           deletePost({
             id: post?.id!,
-          }).then(() => {
-            setIsDeleted(true);
-            setTimeout(() => {
-              setIsDeleted(false);
-            }, 2000);
           })
         }
       >

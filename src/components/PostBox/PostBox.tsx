@@ -1,14 +1,15 @@
 import { Post } from '@tribeplatform/gql-client/types';
-import { Link } from 'react-router-dom';
-import LikeBtn from './LikeBtn';
-
 import { ShareIcon, BellIcon } from '@heroicons/react/outline';
+import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+import LikeBtn from './LikeBtn';
 import PostBoxMenu from './PostBoxMenu';
 import AddComment from './AddComment';
 import CommentList from './CommentList';
 import UserAvatar from './UserAvatar';
-import { useLocation } from 'react-router-dom';
-import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
 const PostBox = ({
   post,

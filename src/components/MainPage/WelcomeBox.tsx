@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 const WelcomeBox = () => {
   return (
     <aside className="hidden col-span-3 xl:col-span-1 xl:block">

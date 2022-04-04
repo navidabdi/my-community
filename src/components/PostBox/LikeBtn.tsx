@@ -4,17 +4,20 @@ import {
 } from '@tribeplatform/react-sdk/hooks';
 import { ThumbUpIcon } from '@heroicons/react/outline';
 import { ThumbUpIcon as ThumbUpIconSolid } from '@heroicons/react/solid';
-import { useNavigate } from 'react-router-dom';
 import { Post } from '@tribeplatform/gql-client/types';
 import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+
+import { useNavigate } from 'react-router-dom';
 
 const LikeBtn = ({ post }: { post?: Post }) => {
   const { mutate: upvote } = useAddReaction();
   const { mutate: downvote } = useRemoveReaction();
+
   const reacted = post?.reactions?.some(
     (reaction: { reacted: any; reaction: string }) =>
       reaction.reacted && reaction.reaction === '+1'
   );
+
   const navigate = useNavigate();
   const { data: authMember } = useAuthMember();
 

@@ -1,4 +1,5 @@
 import { Post } from '@tribeplatform/gql-client/types';
+
 import UserAvatar from './UserAvatar';
 
 const CommentList = ({ post }: { post?: Post }) => {

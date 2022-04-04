@@ -1,6 +1,7 @@
 import { Post, PostMappingTypeEnum } from '@tribeplatform/gql-client/types';
-import { useState } from 'react';
 import { useAddReply } from '@tribeplatform/react-sdk/hooks';
+
+import { useState } from 'react';
 
 const AddComment = ({ post }: { post?: Post }) => {
   const [text, setText] = useState<string>('');

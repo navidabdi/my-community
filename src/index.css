@@ -19,7 +19,7 @@
     @apply text-gray-600 text-sm font-semibold mb-2 block;
   }
   .input {
-    @apply appearance-none border-2 border-blue-100 rounded w-full py-3 px-5 text-gray-700 leading-tight  focus:outline-none focus:border-blue-400 focus:bg-blue-50 mb-5 text-[1rem] transition-all duration-75;
+    @apply appearance-none border-2 border-blue-100 rounded w-full py-3 px-5 text-gray-700 leading-tight focus:outline-none focus:border-blue-400 focus:bg-blue-50 mb-5 text-[1rem] transition-all duration-75;
   }
   .btn {
     @apply bg-blue-600 hover:bg-blue-800 transition-all duration-100 ease-in p-5 text-blue-50 text-[1rem] font-semibold w-full sm:w-1/2 mt-5 rounded-[.3rem] leading-3;

@@ -9,16 +9,12 @@ import {
 
 import { useLogout } from '../../hooks/useLogout';
 
-interface Props {
-  trigerProfileMenu: boolean;
-}
-
-const ProfileMenu: React.FC<Props> = (props: Props) => {
+const ProfileMenu = ({ trigerProfileMenu }: { trigerProfileMenu: boolean }) => {
   const logout = useLogout();
   return (
     <nav
       className={`py-1 bg-white absolute right-0 top-[110%] transition-transform duration-200 ease-in-out w-[13rem] rounded-md shadow-lg bg-surface-50 border border-blue-100 focus-visible:ring focus:outline-none ${
-        props.trigerProfileMenu
+        trigerProfileMenu
           ? 'scale-100 pointer-events-auto opacity-100'
           : 'scale-0 pointer-events-none opacity-0'
       }`}

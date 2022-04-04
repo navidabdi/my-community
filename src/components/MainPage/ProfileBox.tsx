@@ -2,8 +2,8 @@ import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
 
 const ProfileBox = () => {
   const { data: authMember } = useAuthMember();
+  const userName = authMember?.name;
 
-  const firstLetterName = authMember?.name;
   return (
     <aside className="hidden col-span-3 xl:col-span-1 xl:block">
       <div className="box text-gray-600 p-0 overflow-hidden">
@@ -22,7 +22,7 @@ const ProfileBox = () => {
             />
           ) : (
             <div className="w-28 h-28 absolute bg-blue-100 left-[50%] border-4 border-white translate-x-[-50%] -bottom-10 rounded-full flex items-center justify-center text-3xl font-bold text-blue-700">
-              {firstLetterName?.split('')[0]}
+              {userName?.split('')[0]}
             </div>
           )}
         </div>

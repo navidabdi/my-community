@@ -1,14 +1,17 @@
 import { useAuthMember } from '@tribeplatform/react-sdk/hooks';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProfileMenu from './ProfileMenu';
-import MobileMenu from './MobileMenu';
+
 import {
   PlusIcon,
   BellIcon,
   MenuAlt1Icon,
   MenuIcon,
 } from '@heroicons/react/outline';
+
+import ProfileMenu from './ProfileMenu';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [mobileMenuTriger, setMobileMenuTriger] = useState<boolean>(false);
